@@ -16,16 +16,19 @@ class SearchTests(TestCase):
 
     def test_search_driver_by_username(self):
         response = self.client.login(username="john", password="password")
-        response = self.client.get(reverse("taxi:driver-list") + "?username=john")
+        response = self.client.get(
+            reverse("taxi:driver-list") + "?username=john")
         self.assertContains(response, "john")
         self.assertNotContains(response, "doe")
 
     def test_search_car_by_model(self):
         self.client.login(username="john", password="password")
-        response = self.client.get(reverse("taxi:car-list") + "?model=Model S")
+        response = self.client.get(
+            reverse("taxi:car-list") + "?model=Model S")
         self.assertContains(response, "Model S")
 
     def test_search_manufacturer_by_name(self):
         self.client.login(username="john", password="password")
-        response = self.client.get(reverse("taxi:manufacturer-list") + "?name=Tesla")
+        response = self.client.get(
+            reverse("taxi:manufacturer-list") + "?name=Tesla")
         self.assertContains(response, "Tesla")
