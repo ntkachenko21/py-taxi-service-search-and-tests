@@ -11,8 +11,14 @@ class SearchTests(TestCase):
         self.driver2 = Driver.objects.create_user(
             username="doe", password="password", license_number="XYZ54321"
         )
-        self.manufacturer = Manufacturer.objects.create(name="Tesla", country="USA")
-        self.car = Car.objects.create(model="Model S", manufacturer=self.manufacturer)
+        self.manufacturer = Manufacturer.objects.create(
+            name="Tesla",
+            country="USA"
+        )
+        self.car = Car.objects.create(
+            model="Model S",
+            manufacturer=self.manufacturer
+        )
 
     def test_search_driver_by_username(self):
         response = self.client.login(username="john", password="password")
