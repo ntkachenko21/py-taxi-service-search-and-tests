@@ -21,7 +21,7 @@ class SearchTests(TestCase):
         )
 
     def test_search_driver_by_username(self):
-        response = self.client.login(username="john", password="password")
+        self.client.login(username="john", password="password")
         response = self.client.get(
             reverse("taxi:driver-list") + "?username=john")
         self.assertContains(response, "john")

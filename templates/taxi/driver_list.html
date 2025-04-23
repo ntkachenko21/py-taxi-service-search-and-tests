@@ -9,7 +9,7 @@
     </h1>
     
     <form method="get">
-      <input type="text" name="username" placeholder="Search by username">
+      <input type="text" name="username" value="{{ request.GET.username }}" placeholder="Search by username">
       <button type="submit">Search</button>
     </form>
   
